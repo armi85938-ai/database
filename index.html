@@ -31,6 +31,7 @@
         <div class="badge-title">KHATMIN <span>INTEL</span></div>
         <div class="badge-sub">POLICE CLEARANCE SYSTEM</div>
         <div class="badge-classified">CLASSIFIED</div>
+        <div class="secure-note">SECURE COMMAND ACCESS · ENCRYPTED CHANNEL</div>
       </div>
 
       <form id="loginForm" class="login-form" autocomplete="on">
@@ -203,43 +204,67 @@ body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opac
 .tape.top{top:0;border-bottom:1px solid rgba(0,0,0,.6)}
 .tape.bottom{bottom:0;border-top:1px solid rgba(0,0,0,.6)}
 
-#login{position:relative;z-index:2;min-height:100svh;display:grid;place-items:center;padding:30px 16px}
-.login-wrap{width:min(440px,100%);position:relative}
-.login-radar{position:absolute;inset:-60px;pointer-events:none;opacity:.35;background:radial-gradient(circle at center,rgba(255,184,0,.08),transparent 60%);border-radius:50%}
-.login-radar::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(255,184,0,.25) 30deg,transparent 60deg);animation:radarSpin 4s linear infinite}
-.login-radar::after{content:"";position:absolute;inset:20%;border-radius:50%;border:1px solid rgba(255,184,0,.2)}
+#login{position:relative;z-index:2;min-height:100svh;display:grid;place-items:center;padding:42px 16px 34px;overflow:hidden}
+#login::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(90deg,transparent 0 49.8%,rgba(0,200,255,.035) 50%,transparent 50.2%),
+  linear-gradient(0deg,transparent 0 49.8%,rgba(255,184,0,.035) 50%,transparent 50.2%),
+  radial-gradient(circle at 50% 35%,rgba(0,200,255,.09),transparent 32%),
+  radial-gradient(circle at 50% 85%,rgba(255,184,0,.06),transparent 38%)}
+.login-wrap{width:min(470px,100%);position:relative}
+.login-radar{position:absolute;inset:-85px;pointer-events:none;opacity:.34;background:
+  radial-gradient(circle at center,transparent 0 27%,rgba(0,200,255,.08) 27.2% 27.5%,transparent 27.8% 52%,rgba(0,200,255,.06) 52.2% 52.5%,transparent 52.8%),
+  conic-gradient(from 0deg,transparent 0deg,rgba(0,200,255,.22) 25deg,transparent 52deg);
+  border-radius:50%;animation:radarSpin 5s linear infinite}
+.login-radar::before{content:"";position:absolute;inset:8%;border-radius:50%;border:1px solid rgba(0,200,255,.12)}
+.login-radar::after{content:"";position:absolute;inset:23%;border-radius:50%;border:1px dashed rgba(255,184,0,.14)}
 @keyframes radarSpin{to{transform:rotate(360deg)}}
-.login-card{position:relative;border:1px solid var(--line2);border-radius:6px;background:linear-gradient(180deg,rgba(10,14,20,.97),rgba(6,10,16,.99));box-shadow:0 0 60px rgba(255,184,0,.15),inset 0 1px rgba(255,184,0,.1);overflow:hidden}
-.login-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:scanH 3s ease-in-out infinite}
-@keyframes scanH{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
-.login-badge-wrap{padding:36px 26px 20px;text-align:center;position:relative}
-.badge-emblem{width:100px;height:100px;margin:0 auto;position:relative;filter:drop-shadow(0 0 20px rgba(255,184,0,.5))}
+.login-card{position:relative;border:1px solid rgba(0,200,255,.35);border-radius:14px;background:
+  linear-gradient(180deg,rgba(8,15,23,.96),rgba(4,9,15,.985));
+  box-shadow:0 0 0 1px rgba(255,184,0,.08),0 0 70px rgba(0,200,255,.13),0 28px 90px rgba(0,0,0,.72),inset 0 1px rgba(255,255,255,.06);
+  overflow:hidden;backdrop-filter:blur(18px)}
+.login-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),var(--gold),var(--cyan),transparent);animation:scanH 3.2s ease-in-out infinite}
+.login-card::after{content:"";position:absolute;left:0;right:0;top:0;height:100%;pointer-events:none;background:linear-gradient(180deg,rgba(0,200,255,.035),transparent 22%,transparent 78%,rgba(255,184,0,.025))}
+.login-badge-wrap{padding:30px 24px 18px;text-align:center;position:relative}
+.badge-emblem{width:112px;height:112px;margin:0 auto;position:relative;filter:drop-shadow(0 0 22px rgba(0,200,255,.35))}
+.badge-emblem::after{content:"";position:absolute;inset:4px;border:1px solid rgba(0,200,255,.28);border-radius:50%;box-shadow:inset 0 0 20px rgba(0,200,255,.08)}
 .badge-emblem svg{width:100%;height:100%;animation:badgeGlow 2.5s ease-in-out infinite}
-@keyframes badgeGlow{0%,100%{filter:drop-shadow(0 0 6px rgba(255,184,0,.6))}50%{filter:drop-shadow(0 0 16px rgba(255,184,0,.9))}}
-.badge-title{font-family:var(--mono);font-weight:900;letter-spacing:6px;font-size:14px;color:var(--gold);margin-top:16px}
-.badge-title span{color:var(--text)}
-.badge-sub{font-family:var(--mono);font-size:8px;letter-spacing:4px;color:var(--dim);margin-top:6px}
-.badge-classified{display:inline-block;margin-top:12px;padding:4px 12px;border:1px solid var(--red);border-radius:2px;color:var(--red);font-family:var(--mono);font-size:8px;letter-spacing:3px;font-weight:900;animation:blink 1.5s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-.login-form{padding:8px 26px 26px;display:grid;gap:12px}
-.field-label{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:var(--dim);margin-bottom:5px;display:flex;justify-content:space-between}
-.field-label b{color:var(--gold);font-weight:700}
+@keyframes badgeGlow{0%,100%{filter:drop-shadow(0 0 7px rgba(0,200,255,.55))}50%{filter:drop-shadow(0 0 18px rgba(0,200,255,.95))}}
+.badge-title{font-family:var(--mono);font-weight:900;letter-spacing:5px;font-size:16px;color:var(--cyan);margin-top:14px;text-shadow:0 0 16px rgba(0,200,255,.3)}
+.badge-title span{color:#fff}
+.badge-sub{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:#7f8b98;margin-top:7px}
+.badge-classified{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:5px 12px;border:1px solid rgba(255,51,68,.65);border-radius:999px;color:#ff6c78;font-family:var(--mono);font-size:8px;letter-spacing:3px;font-weight:900;background:rgba(255,51,68,.06);box-shadow:0 0 18px rgba(255,51,68,.08);animation:blink 1.5s ease-in-out infinite}
+.badge-classified::before{content:"";width:5px;height:5px;border-radius:50%;background:#ff3344;box-shadow:0 0 8px #ff3344}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.55}}
+.secure-note{margin-top:10px;font-family:var(--mono);font-size:7px;letter-spacing:1.7px;color:#53616e}.login-form{padding:12px 26px 26px;display:grid;gap:14px;position:relative;z-index:2}
+.field-label{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:#7f8b98;margin-bottom:6px;display:flex;justify-content:space-between}
+.field-label b{color:var(--cyan);font-weight:800}
 .input-wrap{position:relative}
-.input-wrap::before{content:"▶";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:10px;opacity:.7;font-family:var(--mono)}
-.input{width:100%;height:50px;border:1px solid var(--line2);border-radius:3px;background:rgba(0,0,0,.4);color:var(--text);padding:0 34px 0 16px;font-family:var(--mono);font-size:12px;letter-spacing:2px;transition:.2s}
-.input:focus{border-color:var(--gold);background:rgba(255,184,0,.04);box-shadow:0 0 0 3px rgba(255,184,0,.1)}
-.input::placeholder{color:var(--dimmer);letter-spacing:3px}
-.btn-primary{height:52px;border-radius:3px;background:linear-gradient(180deg,var(--gold),var(--gold2));color:#0a0e14;font-family:var(--mono);font-weight:900;font-size:12px;letter-spacing:4px;border:1px solid rgba(255,255,255,.2);box-shadow:0 4px 20px rgba(255,184,0,.35),inset 0 1px rgba(255,255,255,.3);transition:.15s;position:relative;overflow:hidden}
-.btn-primary:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 26px rgba(255,184,0,.5)}
-.btn-primary:disabled{opacity:.6;cursor:wait;letter-spacing:2px}
-.login-status{border-top:1px solid var(--line);padding:12px 20px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;letter-spacing:2px;color:var(--dim);background:rgba(0,0,0,.3)}
+.input-wrap::before{content:"›";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--cyan);font-size:18px;opacity:.85;font-family:var(--mono);z-index:2}
+.input{width:100%;height:54px;border:1px solid rgba(0,200,255,.24);border-radius:8px;background:rgba(0,0,0,.38);color:#fff;padding:0 38px 0 16px;font-family:var(--mono);font-size:12px;letter-spacing:2px;transition:.2s;box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)}
+.input:focus{border-color:rgba(0,200,255,.85);background:rgba(0,200,255,.045);box-shadow:0 0 0 3px rgba(0,200,255,.09),0 0 24px rgba(0,200,255,.08)}
+.input::placeholder{color:#46515d;letter-spacing:3px}
+.btn-primary{height:54px;border-radius:8px;background:linear-gradient(135deg,#ffd34d 0%,#ffb800 45%,#ff8f00 100%);color:#071019;font-family:var(--mono);font-weight:900;font-size:12px;letter-spacing:4px;border:1px solid rgba(255,255,255,.25);box-shadow:0 8px 30px rgba(255,184,0,.25),inset 0 1px rgba(255,255,255,.45);transition:.18s;position:relative;overflow:hidden}
+.btn-primary::before{content:"";position:absolute;top:0;bottom:0;width:70px;left:-100px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:buttonSweep 3s infinite}
+@keyframes buttonSweep{0%,65%{left:-100px}100%{left:110%}}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 34px rgba(255,184,0,.4)}
+.btn-primary:disabled{opacity:.62;cursor:wait;letter-spacing:2px}
+.login-status{border-top:1px solid rgba(0,200,255,.14);padding:11px 18px;display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:7px;letter-spacing:1.7px;color:#596572;background:rgba(0,0,0,.25);position:relative;z-index:2}
 .login-status .ok{color:var(--green)}
 .login-status .ok.err{color:var(--red)}
 .login-status .ok::before{content:"●";margin-left:6px;animation:pulseDot 1.5s ease-in-out infinite}
 @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.3}}
-.login-error{height:14px;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--red);font-weight:700}
+.login-error{min-height:16px;height:auto;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#ff6674;font-weight:800}
+@media(max-width:520px){
+  #login{padding:28px 11px 26px}
+  .login-card{border-radius:12px}
+  .login-badge-wrap{padding:25px 18px 15px}
+  .badge-emblem{width:94px;height:94px}
+  .badge-title{font-size:14px;letter-spacing:4px}
+  .login-form{padding:10px 18px 22px;gap:12px}
+  .login-status{padding:10px 13px;font-size:6.5px}
+}
 
-#app{display:none;position:relative;z-index:2;min-height:100svh;padding:14px 10px}
+#app{display:none;position:relative;z-index:2;min-height:100svh;padding:calc(14px + env(safe-area-inset-top)) 10px calc(14px + env(safe-area-inset-bottom))}
 .shell{min-height:calc(100svh - 28px);max-width:1500px;margin:auto;border:1px solid var(--line);border-radius:6px;background:rgba(6,10,16,.9);backdrop-filter:blur(20px);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 0 80px rgba(0,0,0,.8)}
 .top{height:60px;padding:0 16px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(255,184,0,.05),transparent);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:12px}
 .role{display:flex;align-items:center;gap:12px;min-width:0}
@@ -376,6 +401,15 @@ body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opac
 @media(min-width:500px){.item-fields{grid-template-columns:repeat(2,1fr)}}
 .item-field{padding:8px 10px;border-radius:3px;background:rgba(0,0,0,.35);border:1px solid rgba(255,184,0,.08)}
 .item-field-label{font-family:var(--mono);font-size:8px;color:var(--dim);letter-spacing:1.5px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+
+.field-edit-row{display:flex;gap:8px;align-items:stretch}
+.field-edit-row input{flex:1;min-width:0}
+.field-save-btn{min-width:74px;padding:0 10px;border:1px solid rgba(0,255,136,.35);border-radius:3px;background:rgba(0,255,136,.07);color:#00ff88;font-family:var(--mono);font-size:8px;font-weight:900;letter-spacing:1px;cursor:pointer;transition:.15s}
+.field-save-btn:hover{background:rgba(0,255,136,.16);border-color:#00ff88;transform:translateY(-1px)}
+.field-save-btn:disabled{opacity:.55;cursor:wait;transform:none}
+.field-save-btn.saved{border-color:rgba(0,255,136,.6);background:rgba(0,255,136,.14)}
+@media(max-width:520px){.field-edit-row{gap:6px}.field-save-btn{min-width:62px;padding:0 7px;font-size:7px}}
+
 .item-field-value{font-size:11px;color:var(--gold);margin-top:4px;font-family:var(--mono);font-weight:700;word-break:break-all}
 .item-field-value.empty{color:var(--dimmer);font-weight:400;font-style:italic}
 .item-field input{width:100%;border:0;background:transparent;color:var(--gold);font-size:11px;font-weight:700;padding:3px 0;margin-top:3px;border-bottom:1px solid transparent;font-family:var(--mono);transition:.15s}
@@ -548,7 +582,7 @@ function initSupabase(){
   try {
     if(!window.supabase){
       console.error('[KHATMIN] supabase-js not loaded. CDN blocked?');
-      updateDbStatus(false, 'CDN BLOCKED');
+      updateDbStatus(false, 'SDK BLOCKED');
       return null;
     }
     if(typeof window.supabase.createClient !== 'function'){
@@ -557,13 +591,42 @@ function initSupabase(){
       return null;
     }
     const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    console.log('[KHATMIN] Supabase client ready');
-    updateDbStatus(true, 'CONNECTED');
+    console.log('[KHATMIN] Supabase client created');
+    // Do not call this CONNECTED yet: client creation alone does not prove
+    // that the browser can reach the project's database.
+    updateDbStatus(false, 'VERIFYING DB');
+    verifyDatabase(client);
     return client;
   } catch(err){
     console.error('[KHATMIN] Supabase init failed:', err);
     updateDbStatus(false, 'INIT FAILED');
     return null;
+  }
+}
+
+async function verifyDatabase(client){
+  if(!client) return false;
+  try{
+    // Lightweight real request against the same table used by the app.
+    // A zero-row result is still a successful database connection.
+    const { error } = await client
+      .from('requests')
+      .select('id', { head:true, count:'exact' });
+
+    if(error){
+      console.error('[KHATMIN] Database verification failed:', error);
+      updateDbStatus(false, 'DB ACCESS ERROR');
+      return false;
+    }
+
+    dbOnline = true;
+    updateDbStatus(true, 'DB CONNECTED');
+    console.log('[KHATMIN] Database verified successfully');
+    return true;
+  }catch(err){
+    console.error('[KHATMIN] Database verification exception:', err);
+    updateDbStatus(false, 'DB OFFLINE');
+    return false;
   }
 }
 function updateDbStatus(online, label){
@@ -691,21 +754,26 @@ $('loginForm').addEventListener('submit', async (e) => {
   const u = userEl.value.trim().toLowerCase();
   const p = passEl.value;
 
+  // Required demo/company credentials:
+  // admin / 0010  -> admin command center
+  // test  / 0010  -> test/user terminal
   if(!USERS[u] || USERS[u] !== p){
-    errEl.textContent = 'ACCESS DENIED';
+    errEl.textContent = 'ACCESS DENIED · INVALID CREDENTIALS';
+    userEl.focus();
     return;
   }
-  errEl.textContent = '';
 
+  errEl.textContent = '';
   btn.disabled = true;
   btn.textContent = 'AUTHENTICATING...';
 
   try {
-    // Panel comes up FIRST — independent of DB
+    // Login itself remains available even if Supabase is temporarily offline.
+    // All actual records are still read/written through the DB layer below.
     await enterApp(u);
   } catch(err){
     console.error('[LOGIN]', err);
-    errEl.textContent = 'CONNECTION ERROR';
+    errEl.textContent = 'LOGIN ERROR · TRY AGAIN';
   } finally {
     btn.disabled = false;
     btn.textContent = 'AUTHENTICATE';
@@ -754,6 +822,7 @@ function logout(){
   currentUser = null;
   currentRequest = null;
   clearInterval(clockTimer);
+  stopWorkspaceRefresh();
   if(requestsChannel && sb){
     try { sb.removeChannel(requestsChannel); } catch(_){}
     requestsChannel = null;
@@ -892,6 +961,26 @@ async function openWorkspace(req){
 
   await renderIdentity();
   await updateBadges();
+  startWorkspaceRefresh();
+}
+
+let workspaceRefreshTimer = null;
+function startWorkspaceRefresh(){
+  clearInterval(workspaceRefreshTimer);
+  if(currentUser !== 'test') return;
+  workspaceRefreshTimer = setInterval(async () => {
+    if(!currentRequest || $('workspace').style.display === 'none') return;
+    try {
+      await renderIdentity();
+      await updateBadges();
+    } catch(e) {
+      console.error('[workspace refresh]', e);
+    }
+  }, 3000);
+}
+function stopWorkspaceRefresh(){
+  clearInterval(workspaceRefreshTimer);
+  workspaceRefreshTimer = null;
 }
 
 async function renderIdentity(){
@@ -905,7 +994,10 @@ async function renderIdentity(){
         <div class="field-body">
           <div class="label">${esc(f.label)}</div>
           <div class="sub">${esc(f.sub)}</div>
-          <input class="value-input" data-key="${f.key}" value="${esc(v)}" placeholder="—">
+          <div class="field-edit-row">
+            <input class="value-input" data-key="${f.key}" value="${esc(v)}" placeholder="—">
+            <button type="button" class="field-save-btn" data-save-key="${f.key}">SAVE</button>
+          </div>
         </div>
       </div>`;
     }
@@ -920,13 +1012,34 @@ async function renderIdentity(){
   }).join('');
 
   if(canEdit){
-    $('identityGrid').querySelectorAll('input[data-key]').forEach(inp => {
-      const save = async () => {
-        try { await DB.updateIdentity(currentRequest.id, inp.dataset.key, inp.value.trim()); }
-        catch(e){ toast('SAVE FAILED', 'Check connection'); }
-      };
-      inp.addEventListener('change', save);
-      inp.addEventListener('blur', save);
+    $('identityGrid').querySelectorAll('button[data-save-key]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const key = btn.dataset.saveKey;
+        const inp = $('identityGrid').querySelector(`input[data-key="${key}"]`);
+        if(!inp) return;
+        const original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'SAVING...';
+        try {
+          await DB.updateIdentity(currentRequest.id, key, inp.value.trim());
+          btn.textContent = 'SAVED ✓';
+          btn.classList.add('saved');
+          toast('SAVED', `${key} updated in database`);
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.classList.remove('saved');
+            btn.disabled = false;
+          }, 1200);
+        } catch(e){
+          console.error(e);
+          btn.textContent = 'FAILED';
+          toast('SAVE FAILED', 'Check database connection', 'alert');
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.disabled = false;
+          }, 1400);
+        }
+      });
     });
   }
 }
@@ -990,7 +1103,10 @@ function renderItem(item, idx, isBank, fields, canEdit){
         if(canEdit){
           return `<div class="item-field">
             <div class="item-field-label"><span>${esc(f.label)}</span><span>${esc(f.sub)}</span></div>
-            <input data-id="${esc(item.id)}" data-field="${f.key}" value="${esc(v)}" placeholder="—">
+            <div class="field-edit-row">
+              <input data-id="${esc(item.id)}" data-field="${f.key}" value="${esc(v)}" placeholder="—">
+              <button type="button" class="field-save-btn" data-save-field="${esc(f.key)}" data-id="${esc(item.id)}">SAVE</button>
+            </div>
           </div>`;
         }
         return `<div class="item-field">
@@ -1005,17 +1121,39 @@ function renderItem(item, idx, isBank, fields, canEdit){
 function bindItemEvents(isBank){
   if(currentUser !== 'admin') return;
   const body = $('modalBody');
-  body.querySelectorAll('input[data-field]').forEach(inp => {
-    const save = async () => {
+
+  // Every field is saved independently with its own SAVE button.
+  body.querySelectorAll('button[data-save-field]').forEach(btn => {
+    btn.onclick = async () => {
+      const inp = body.querySelector(`input[data-id="${btn.dataset.id}"][data-field="${btn.dataset.saveField}"]`);
+      if(!inp) return;
+      const original = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'SAVING...';
       try {
-        const data = { [inp.dataset.field]: inp.value };
+        const data = { [inp.dataset.field]: inp.value.trim() };
         if(isBank) await DB.updateBank(currentRequest.id, inp.dataset.id, data);
         else await DB.updateSim(currentRequest.id, inp.dataset.id, data);
-      } catch(e){ console.error(e); }
+        btn.textContent = 'SAVED ✓';
+        btn.classList.add('saved');
+        toast('SAVED', 'Field updated in database');
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.classList.remove('saved');
+          btn.disabled = false;
+        }, 1200);
+      } catch(e){
+        console.error(e);
+        btn.textContent = 'FAILED';
+        toast('SAVE FAILED', 'Check database connection', 'alert');
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.disabled = false;
+        }, 1400);
+      }
     };
-    inp.addEventListener('change', save);
-    inp.addEventListener('blur', save);
   });
+
   body.querySelectorAll('button[data-action="delete"]').forEach(btn => {
     btn.onclick = async () => {
       if(!confirm('Delete this record?')) return;
@@ -1063,7 +1201,8 @@ $('folderModal').style.display = 'none';
 // Init Supabase — safe, after all handlers attached
 sb = initSupabase();
 
-// If CDN was slow and supabase loaded later, try re-init
+// If CDN was slow and supabase loaded later, try re-init.
+// The second stage also performs a real database verification.
 if(!sb){
   setTimeout(() => {
     if(!sb){
@@ -1074,6 +1213,14 @@ if(!sb){
       }
     }
   }, 2500);
+} else {
+  // If the initial probe is still running, keep the UI status accurate.
+  verifyDatabase(sb).then(ok => {
+    if(ok && currentUser === 'admin'){
+      loadAdminResults().catch(console.error);
+      subscribeToRequests();
+    }
+  });
 }
 </script>
 </body>
